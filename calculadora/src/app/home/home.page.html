@@ -1,40 +1,72 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title> Blank </ion-title>
+    <ion-title>Calculator</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button href="./?ionic:mode=md">Android</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button href="./?ionic:mode=ios">IOS</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <table>
-    <tr>
-      <td colspan="4"><button type="button" class="result">{{ result }}</button></td>
-    </tr>
-    <tr>
-      <td><button type="button" (click)="add('1')">1</button></td>
-      <td><button type="button" (click)="add('2')">2</button></td>
-      <td><button type="button" (click)="add('3')">3</button></td>
-      <td><button type="button" (click)="add('+')">+</button></td>
-    </tr>
-    <tr>
-      <td><button type="button" (click)="add('4')">4</button></td>
-      <td><button type="button" (click)="add('5')">5</button></td>
-      <td><button type="button" (click)="add('6')">6</button></td>
-      <td><button type="button" (click)="add('-')">-</button></td>
-    </tr>
-    <tr>
-      <td><button type="button" (click)="add('7')">7</button></td>
-      <td><button type="button" (click)="add('8')">8</button></td>
-      <td><button type="button" (click)="add('9')">9</button></td>
-      <td><button type="button" (click)="add('*')">*</button></td>
-    </tr>
-    <tr>
-      <td colspan="3"><button type="button" (click)="add('0')">0</button></td>
-      <td><button type="button" (click)="add('/')">/</button></td>
-    </tr>
-    <tr>
-      <td colspan="2"><button type="button" class="ac" (click)="del()">AC</button></td>
-      <td><button type="button" (click)="add('.')">.</button></td>
-      <td><button type="button" (click)="calc()">=</button></td>
-    </tr>
-  </table>
+<ion-content #content [fullscreen]="true">
+  <ion-list>
+    <ion-item>
+      <ion-label>Tamaño botones</ion-label>
+      <ion-select value="default" id="button" (ionChange)="onChangeSize($event)">
+        <ion-select-option value="small">Pequeños</ion-select-option>
+        <ion-select-option value="default">Medianos</ion-select-option>
+        <ion-select-option value="large">Grandes</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Tipo botones</ion-label>
+      <ion-select value="solid" id="content" (ionChange)="onChangeButton($event)">
+        <ion-select-option value="clear">Sin borde ni color</ion-select-option>
+        <ion-select-option value="outline">Sólo borde</ion-select-option>
+        <ion-select-option value="solid">Con color de fondo</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-col colspan="4"
+        ><ion-button type="button" color="dark" class="result"
+          >{{ result }}</ion-button
+        ></ion-col
+      >
+    </ion-row>
+    <ion-row>
+      <ion-col><ion-button #boton (click)="add('1')">1</ion-button></ion-col>
+      <ion-col><ion-button #boton (click)="add('2')">2</ion-button></ion-col>
+      <ion-col><ion-button #boton (click)="add('3')">3</ion-button></ion-col>
+      <ion-col><ion-button #boton (click)="add('+')">+</ion-button></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col><ion-button (click)="add('4')">4</ion-button></ion-col>
+      <ion-col><ion-button (click)="add('5')">5</ion-button></ion-col>
+      <ion-col><ion-button (click)="add('6')">6</ion-button></ion-col>
+      <ion-col><ion-button (click)="add('-')">-</ion-button></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col><ion-button (click)="add('7')">7</ion-button></ion-col>
+      <ion-col><ion-button (click)="add('8')">8</ion-button></ion-col>
+      <ion-col><ion-button (click)="add('9')">9</ion-button></ion-col>
+      <ion-col><ion-button (click)="add('*')">*</ion-button></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="9"><ion-button (click)="add('0')">0</ion-button></ion-col>
+      <ion-col><ion-button (click)="add('/')">/</ion-button></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6"
+        ><ion-button color="danger" expand="block" (click)="del()"
+          >AC</ion-button
+        ></ion-col
+      >
+      <ion-col><ion-button (click)="add('.')">.</ion-button></ion-col>
+      <ion-col><ion-button (click)="calc()">=</ion-button></ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

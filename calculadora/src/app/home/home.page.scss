@@ -26,27 +26,21 @@
   text-decoration: none;
 }
 
-ion-content {
-  height: 100%;
-  width: 100%;
-}
-
-table {
+ion-grid {
   height: 100%;
   width:100%;
 }
 
-button {
+ion-col {
+  margin: 5px;
+}
+
+ion-button {
   height: 100%;
   width: 100%;
   font-size: 150%;
 }
 
 .result {
-  background-color: white;
   color: black;
-}
-
-.ac {
-  color: red;
 }
